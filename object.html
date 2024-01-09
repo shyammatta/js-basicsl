@@ -1,0 +1,354 @@
+Saishyam S, [12/9/2023 11:32 AM]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="login.css">
+  <script src="https://kit.fontawesome.com/51ef45e87a.js" crossorigin="anonymous"></script>
+  
+</head>
+<body>
+  <!------------------------------------------css--------------------------->
+<style>
+*{
+  margin:0;
+  padding: 0;
+}
+.hero{
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  display: none;
+}
+.form-box{
+  width: 380px;
+  height: 560px;
+  position: relative;
+  margin: 6% auto ;
+  background: #fff;
+  padding: 5px ;
+  overflow: hidden;
+  border:black ;
+  border: 1px solid black;
+}
+.button-box{
+  width: 220px;
+  margin: 35px auto;
+  position: relative;
+}
+.toggle-btn{
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  background: transparent;
+  outline: none;
+  position: relative;
+  font-size: medium;
+  }
+#btn{
+ top:calc(100% - 5px); 
+ left: 0;
+ position: absolute;
+ width: 100px;
+ height: 5%;
+ background:linear-gradient(to right,green,green);
+ transition: 0.5s;
+}
+.input-group{
+  top: 100px;
+  position: absolute;
+  width: 288px;
+  transition: .4s;
+}
+.input-field{
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  outline: none;
+  background: transparent;
+}
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 3%;
+  background-color: #3498db;
+  border: none;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.check-box{
+  margin: 30px 10px 30px 0;
+}
+#rem{
+  color: black;
+  font-size: 13px;
+  bottom: 105px;
+  position: absolute;
+  }
+#ok{
+    color: black;
+  font-size: 13px;
+  bottom: 70px;
+  position: absolute;
+}
+#login{
+  left: 50px;
+}
+#register{
+  left: 450px;
+}
+.con{
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    gap: 5%;
+}
+.bun {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20%;
+}
+.bun:hover {
+  background-color: darkgreen;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bun {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+.error-message {
+  color: red;
+  font-size: 15px;
+  margin-top: 5px;
+}
+.password-icon {
+  position: absolute;
+  top: 42.5%; 
+  left: 257px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.password-icon::before {
+  font-size: 20px;
+}
+
+.password-icon2 {
+  position: absolute;
+  top: 49%;
+  left: 257px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.password-icon2::before {
+  font-size: 20px;
+}
+</style>
+<!-- ---------------------------------HTML-------------------------------------------------- -->
+  <center><div class="bun"  onclick="one()">Click Me</div></center>
+  <div class="container">
+  <div class="hero"  >
+    <div class="form-box">
+      <div class="button-box">
+      <div id="btn">
+        <button type="button" class="toggle-btn" onclick="login()">LogIn</button>
+        <button type="button" class="toggle-btn" onclick="register()">Sign up</button>
+      </div>
+      <!-- login -->
+      <form id="login" class="input-group">
+        <label style="padding-top: 5%;">Fullname<i style="color: red;">*</i></label>
+        <p id="nameError" class="error-message"></p>
+        <input type="text" class="input-field" id="name" placeholder="  Enter your user name" required>
+        <label style="padding-top: 5%;">Password<i style="color: red;padding-right: 40px;">*</i></label>
+        <p id="passError" class="error-message"></p> 
+        <span class="password-icon" id="password-toggle"><i class="fa-solid fa-eye-slash" id="eye2" style="font-size: 20px;color: green;"></i><i class="fa-solid fa-eye" id="eye" style="display: none;font-size: 20px;color: green;"></i></span>
+
+        <input type="password" class="input-field" id="pass" placeholder="  Enter Password" required>
+        <input type="checkbox" class="check-box"><span id="rem">Remember password</span><span id="rem" style="padding-left: 60%;">Forgotpassword?</span>
+        <button type="submit" class="login-btn">Login</button><center><diV style="margin-top: 5%;">Dont Have Account?<i style="color: green;font-style: normal;">SIGNUP</i></diV></center>
+      </form>
+      <!-- signup -->
+      <form id="register" class="input-group" onsubmit="return sig()">
+        <label style="padding-top: 5%;">Fullname<i style="color: red;">*</i></label>
+        <p id="nameError1" class="error-message1"></p>
+        <input type="text" class="input-field"  placeholder="  Enter your fullname" required>
+        <label style="padding-top: 5%;">Email<i style="color: red;">*</i></label>
+        <p id="emailError_signup" class="error-message"></p>
+        <input type="email" class="input-field" placeholder="  Email ID" required>
+        <label style="padding-top: 5%;">Enter password<i style="color: red;">*</i></label>
+        <p id="passwordError" class="error-message"></p>
+        <span class="password-icon2" id="password-toggle2"><i class="fa-solid fa-eye-slash" id="eye4" style="font-size: 20px;color: green;"></i><i class="fa-solid fa-eye" id="eye3" style="display: none;font-size: 20px;color: green;"></i></span>
+        <div id="passwordStrength" class="error-message"></div>
+        <input type="password" class="input-field" id="pass2" placeholder="  Enter Password" required style="padding-top: 10px;">
+        <label style="padding-top: 5%;">Contact<i style="color: red;">*</i></label>
+        <input type="number" class="input-field" placeholder=" 91+" required>
+        <input type="checkbox" class="check-box"><span id="ok">I agree to the terms& conditions</span>
+        <div class="con">
+            <div class="col1">
+        <button type="submit" class="login-btn" style="background-color: white;color: blue;border: 1px solid blue;"><i class="fa-solid fa-arrow-left"></i> BACK</button>
+        </div>
+        <div class="col1">
+        <button type="submit" class="login-btn" onclick="validateForm()" >SAVE & VERIFY</button>
+        </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!----------------------------------------JS----------------------------------------------->
+  <script>
+    let x=document.getElementById("login");
+let y=document.getElementById("register");
+let z=document.getElementById("btn");
+var s=document.getElementById('com');
+var container = document.querySelector('.hero');
+var box = document.querySelector('.bun');
+function register()
+{
+  x.style.left="-400px";
+  y.style.left="50px";
+  z.style.left="110px";
+}
+function login()
+{
+  x.style.left="50px";
+  y.style.left="450px";
+  z.style.left="0";
+}
+function one(){
+  box.style.display="none";
+  container.style.display='flex';
+  
+}
+var nameInput = document.getElementById('name');
+var nameError = document.getElementById('nameError');
+var pass = document.getElementById('passError');
+function validateName() {
+  if (nameInput.value === '') {
+    console.log('ok');
+    nameError.textContent = 'user name is requred.';
+  } else {
+    nameError.textContent = '';
+  }
+}
+nameInput.addEventListener('input',validateName);
+var passInput = document.getElementById('pass');
+var passError = document.getElementById('passError');
+var password = document.getElementsByClassName('.password-icon')
+function validatePassword() {
+  if (passInput.value === '') {
+    
+    passError.textContent = 'Password requred.';
+  } else if (passInput.value.length < 8) {
+    // passError.textContent = 'Password should be at least 8 characters.';
+  } else {
+    passError.textContent = '';
+  }
+}
+passInput.addEventListener('input', validatePassword);
+
+
+// ----------------------------password eye
+
+const passwordInput = document.getElementById('pass');
+  const passwordToggle = document.getElementById('password-toggle');
+  var eye = document.getElementById('eye');
+  var eye2 = document.getElementById('eye2');
+
+passwordToggle.addEventListener('click', () => {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      eye2.style.display='none';
+      eye.style.display='flex';
+    } else {
+      passwordInput.type = 'password';
+      eye.style.display='none';
+      eye2.style.display='flex';
+    }
+  });
+  const passwordInput1 = document.getElementById('pass2');
+  const passwordToggle1 = document.getElementById('password-toggle2');
+  var eye3 = document.getElementById('eye3');
+  var eye4 = document.getElementById('eye4');
+  passwordToggle1.addEventListener('click', () => {
+    if (passwordInput1.type === 'password') {
+      passwordInput1.type = 'text';
+      eye4.style.display='none';
+      eye3.style.display='flex';
+    } else {
+      passwordInput1.type = 'password';
+      eye3.style.display='none';
+      eye4.style.display='flex';
+    }
+  });
+  // ---validation
+  function validateForm() {
+    var fullnameInput = document.querySelector("input[type='text']");
+    var emailInput = document.querySelector("input[type='email']");
+    var passwordInput = document.getElementById("pass2");
+
+    var nameError = document.getElementById("nameError1");
+    var emailError = document.getElementById("emailError_signup");
+
+    if (fullnameInput.value.trim() === "") {
+        nameError.textContent = "Fullname is required.";
+        nameError.style.color = "red";
+    } else {
+        nameError.textContent = "";
+    }
+
+    if (emailInput.value.trim() === "") {
+        emailError.textContent = "Email is required.";
+        emailError.style.color = "red";
+    } else {
+        emailError.textContent = "";
+    }
+    if (fullnameInput.value.trim() !== "" && emailInput.value.trim() !== "") {
+        nameError.textContent = "";
+        emailError.textContent = "";
+    }
+}
+// signup password error
+const pass2 = document.getElementById('pass2');
+        const passwordStrengthDiv = document.getElementById('passwordStrength');
+
+        pass2.addEventListener('input', () => {
+            const password = pass2.value;
+            const strength = calculatePasswordStrength(password);
+
+            passwordStrengthDiv.textContent = Password Strength: ${strength};
+        });
+
+        function calculatePasswordStrength(password) {
+           
+            
+            if (password.length < 6) {
+                return "Password should be  8 characters."
+                // return "Weak";
+            } else if (password.length < 10) {
+                return "Medium";
+            } else {
+                return "Strong";
+            }
+        }
+    </script>
+</script>
+</body>
+</html>
