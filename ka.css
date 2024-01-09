@@ -35,6 +35,9 @@
     .card-deck{
         margin-left: 15%;
     }
+    .card-deck .card {
+        width: 100%;
+    }
     
 }
 .card-deck .card  img{
